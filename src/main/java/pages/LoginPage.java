@@ -10,7 +10,8 @@ public class LoginPage {
     private By usernameLocator = By.name("username");
     private By passwordLocator = By.name("password");
     private By loginButtonLocator = By.xpath("//div/button");
-    private By  logo = By.cssSelector(".oxd-brand-banner");
+    private By profileLocator = By.cssSelector("li.oxd-userdropdown");
+    private By logoutButton =  By.linkText("Logout");
     private By  userCredLocator = By.cssSelector(".orangehrm-demo-credentials > p:first-child");
     private By  passCredLocator = By.cssSelector(".orangehrm-demo-credentials > p:nth-of-type(2)");
     String  username;
@@ -30,14 +31,24 @@ public class LoginPage {
 
     }
 
-    public void login(){
+    public void login(boolean isDefault){
+        if (isDefault){getCred();}
+        else {
+            username = "test_user";
+            password = "P@ssw0rd";
+        }
         driver.findElement(usernameLocator).sendKeys(username);
         driver.findElement(passwordLocator).sendKeys(password);
         driver.findElement(loginButtonLocator).click();
     }
 
-    public boolean isLogginSuccess(){
-        return !driver.findElements(logo).isEmpty();
+    public void logout(){
+        driver.findElement(profileLocator).click();
+        driver.findElement(logoutButton).click();
+    }
+
+    public boolean isLoginSuccess(){
+        return !driver.findElements(profileLocator).isEmpty();
     }
 
 }

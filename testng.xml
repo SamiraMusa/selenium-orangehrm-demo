@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test Orange HRM">
+    <test verbose="2" preserve-order="true" name="Add new employee and create user">
+        <classes>
+            <class name="PIM.AddEmployeeTests"/>
+            <class name="admin.AddUserTests" />
+            <class name="login.LoginTests" />
+        </classes>
+    </test>
+</suite>
